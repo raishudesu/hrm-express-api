@@ -32,7 +32,51 @@ export const getEmployee = async (idemployees: number) => {
       where: {
         idemployees,
       },
+      include: {
+        employees_education: {
+          include: {
+            institutions: true,
+          },
+        },
+        employees_relatives: {
+          include: {
+            Relatives: true,
+          },
+        },
+        employees_ext_involvements: {
+          include: {
+            institutions: true,
+          },
+        },
+        employees_has_trainings: {
+          include: {
+            trainings: true,
+          },
+        },
+        employees_prof_eligibility: {
+          include: {
+            professional_exams: true,
+          },
+        },
+        employees_unitassignments: {
+          include: {
+            departments: true,
+          },
+        },
+        service_records: {
+          include: {
+            contract_types: true,
+            job_positions: true,
+          },
+        },
+        skills_has_employees: {
+          include: {
+            skills: true,
+          },
+        },
+      },
     });
+    if (!employee) throw "Such employee does not exist";
     return employee;
   } catch (error) {
     throw error;
