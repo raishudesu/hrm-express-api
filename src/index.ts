@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { employeesRouter } from "./routes/employees.router";
+import { hashRouter } from "./routes/hash.router";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/employees", employeesRouter);
+app.use("/api/hash", hashRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening from port: ${PORT}`);
