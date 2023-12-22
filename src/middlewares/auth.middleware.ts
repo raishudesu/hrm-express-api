@@ -17,7 +17,7 @@ export const authMiddleware = async (
         message: "Unauthorized. Enter complete admin credentials",
       });
 
-    const admin = await adminAuth(
+    await adminAuth(
       adminUsername as string,
       adminPassword as string
     );
